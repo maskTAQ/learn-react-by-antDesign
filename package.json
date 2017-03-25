@@ -1,0 +1,28 @@
+{
+  "name": "components",
+  "version": "1.0.0",
+  "description": "learn react by ant-design",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/classnames": "^0.0.32",
+    "@types/react": "^15.0.20",
+    "@types/react-dom": "^0.14.23",
+    "classnames": "^2.2.5",
+    "omit.js": "^0.1.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.1.2",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "source-map-loader": "^0.2.0",
+    "ts-loader": "^2.0.3",
+    "typescript": "^2.2.1"
+  }
+}
