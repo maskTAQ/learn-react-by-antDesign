@@ -1014,10 +1014,13 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>readme</title></head><body><article class="markdown-body"><h1 id="ant-designreact"><a name="user-content-ant-designreact" href="#ant-designreact" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>抄一遍ant-design源码学习react</h1>
+</style><title>readme</title></head><body><article class="markdown-body"><h1 id="ant-designreact"><a name="user-content-ant-designreact" href="#ant-designreact" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>手写一遍ant-design源码学习react</h1>
+<pre><code>npm install &amp;&amp; webpack
+</code></pre>
 <ol>
 <li>源码中遇到了typescript和less,于是先看了一遍教程。</li>
 <li>在配置tsconfig遇到了一些问题 import 总是需要install @type/moduleName 改为ant-design一样的配置就行了 jsx一项不变。</li>
+<li>配置loader时不支持缩写了!!!</li>
 </ol>
 <h2 id="button"><a name="user-content-button" href="#button" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>button 组件</h2>
 <p>组件引入了omit.js看了一下源码就是删除对象的指定键。</p>
