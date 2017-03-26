@@ -32,11 +32,11 @@ export default class Row extends React.Component<RowProps, any> {
       prefixCls = 'ant-row', ...others } = this.props;
       const classes = classNames({
         [prefixCls]: !type,
-        [`${prefixCls}-${type}`]: type,
-        [`${prefixCls}-${type}-${justify}`]: type && justify,
-        [`${prefixCls}-${type}-${align}`]: type && align,
+        [`${prefixCls}-${type}`]: !!type,
+        [`${prefixCls}-${type}-${justify}`]: !!type && !!justify,
+        [`${prefixCls}-${type}-${align}`]: !!type && !!align,
       }, className);
-      const rowStyle = (gutter as number) > 0 ? assign({}, {
+      const rowStyle = (gutter as number) > 0 ? Object.assign({}, {
         marginLeft: (gutter as number) / -2,
         marginRight: (gutter as number) / -2,
       }, style) : style;
@@ -48,7 +48,7 @@ export default class Row extends React.Component<RowProps, any> {
         }
         if (col.props && (gutter as number) > 0) {
           return cloneElement(col, {
-            style: assign({}, {
+        style: Object.assign({}, {
               paddingLeft: (gutter as number) / 2,
               paddingRight: (gutter as number) / 2,
             }, col.props.style),

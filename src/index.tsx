@@ -6,7 +6,6 @@ import Button  from "./components/button";
 
 ReactDOM.render(
 	<Button 
-	loading={true} 
 	type="danger" 
 	data-ss="ss">ss</Button>,
 	document.getElementById("example")

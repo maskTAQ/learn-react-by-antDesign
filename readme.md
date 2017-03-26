@@ -7,6 +7,7 @@
 3. 配置loader时不支持缩写了!!!
 4. ?组件再传参的时候利用typescrip声明了类型，在组件内部也用 propTypes重复声明了类型，感觉是不是有点多余。
 
+component/style中定义了样式的基类包括色调和生成色调的算法(具体实现看不懂)。
 ## button 组件
 组件引入了omit.js看了一下源码就是删除对象的指定键。
 
@@ -28,7 +29,14 @@ let omit=(obj, fields)=>{
 6. 把其他没用到的属性 剔除loading clicked(利用omit.js) 原封不动的传进原生button属性中
 7. ant把子元素处理了一下 在字符串之前俩个空格(没明白是为什么)
 
+	按钮的幽灵的样式实现是通过点击的时候添加clicked的class。class中定义了定位位置
+	从-1px到-6px的过度。
+
+### buttonGroup
+	
 	buttonGroup就是在button外面包裹了一层div。然后挂载在button类的静态属性下。
+
+
 
 ## icon组件
 	定义了返回标签的方法

@@ -1,7 +1,5 @@
-import React from 'react';
-import { PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames';
-import assign from 'object-assign';
 
 import omit from 'omit.js';
 
@@ -34,18 +32,7 @@ export interface ColProps {
 
 export default class Col extends React.Component<ColProps, any> {
   static propTypes = {
-    span: stringOrNumber,
-    order: stringOrNumber,
-    offset: stringOrNumber,
-    push: stringOrNumber,
-    pull: stringOrNumber,
-    className: PropTypes.string,
-    children: PropTypes.node,
-    xs: objectOrNumber,
-    sm: objectOrNumber,
-    md: objectOrNumber,
-    lg: objectOrNumber,
-    xl: objectOrNumber,
+   
   };
 
   render() {
@@ -61,7 +48,7 @@ export default class Col extends React.Component<ColProps, any> {
       }
 
      
-      sizeClassObj = assign({}, sizeClassObj, {
+      sizeClassObj = Object.assign({}, sizeClassObj, {
         [`${prefixCls}-${size}-${sizeProps.span}`]: sizeProps.span !== undefined,
         [`${prefixCls}-${size}-order-${sizeProps.order}`]: sizeProps.order || sizeProps.order === 0,
         [`${prefixCls}-${size}-offset-${sizeProps.offset}`]: sizeProps.offset || sizeProps.offset === 0,
@@ -71,10 +58,10 @@ export default class Col extends React.Component<ColProps, any> {
     });
     const classes = classNames({
       [`${prefixCls}-${span}`]: span !== undefined,
-      [`${prefixCls}-order-${order}`]: order,
-      [`${prefixCls}-offset-${offset}`]: offset,
-      [`${prefixCls}-push-${push}`]: push,
-      [`${prefixCls}-pull-${pull}`]: pull,
+      [`${prefixCls}-order-${order}`]: !!order,
+      [`${prefixCls}-offset-${offset}`]: !!offset,
+      [`${prefixCls}-push-${push}`]: !!push,
+      [`${prefixCls}-pull-${pull}`]: !!pull,
     }, className, sizeClassObj);
 
     return <div {...omit(others, ['xs', 'sm', 'md', 'lg', 'xl']) } className={classes}>{children}</div>;
