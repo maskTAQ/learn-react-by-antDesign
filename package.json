@@ -4,8 +4,9 @@
   "description": "learn react by ant-design",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server  --config webpack.config.dev.js"
+     },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -22,11 +23,13 @@
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
     "css-loader": "^0.27.3",
+    "extract-text-webpack-plugin": "^2.1.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.2",
     "source-map-loader": "^0.2.0",
     "style-loader": "^0.16.0",
     "ts-loader": "^2.0.3",
-    "typescript": "^2.2.1"
+    "typescript": "^2.2.1",
+    "webpack": "^2.3.2"
   }
 }

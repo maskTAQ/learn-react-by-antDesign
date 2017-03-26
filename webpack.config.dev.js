@@ -5,7 +5,7 @@ module.exports = {
     output: {
         filename: "bundle.js",
         path: __dirname + "/dist",
-        publicPath: "/dist/"
+        publicPath: "/dev/"
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -36,7 +36,7 @@ module.exports = {
         port:8080
     },
     plugins:  [
-     new ExtractTextPlugin("/css/[name].css"),  
+     new ExtractTextPlugin("[name].css"),  
 ],
     // When importing a module whose path matches one of the following, just
     // assume a corresponding global variable exists and use that instead.

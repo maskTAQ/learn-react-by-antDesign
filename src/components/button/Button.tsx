@@ -4,6 +4,7 @@ import { findDOMNode } from 'react-dom';
 
 import   omit from 'omit.js';
 
+import Icon from '../icon'
 //定义 props的数据类型
 export type ButtonType = 'primary' | 'ghost' | 'dashed' | 'danger';
 export type ButtonShape = 'circle' | 'circle-outline';
@@ -126,7 +127,7 @@ export default class Button extends React.Component<ButtonProps, any>{
 		}, className);
 
 		const iconType = loading ? 'loading' : icon;
-		const iconNode = iconType ? '<Icon type={iconType} />' : null;
+		const iconNode = iconType ? <Icon type={iconType} /> : null;
 		//const kids = React.Children.map(children, insertSpace);
 
 		return (

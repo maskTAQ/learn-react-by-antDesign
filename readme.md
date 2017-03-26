@@ -28,3 +28,6 @@ let omit=(obj, fields)=>{
 7. ant把子元素处理了一下 在字符串之前俩个空格(没明白是为什么)
 
 	buttonGroup就是在button外面包裹了一层div。然后挂载在button类的静态属性下。
+
+## icon组件
+	定义了返回标签的方法
