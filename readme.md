@@ -1,4 +1,6 @@
-# 抄一遍ant-design源码学习react
+# 手写一遍ant-design源码学习react
+
+	npm install && webpack
 
 1. 源码中遇到了typescript和less,于是先看了一遍教程。
 2. 在配置tsconfig遇到了一些问题 import 总是需要install @type/moduleName 改为ant-design一样的配置就行了 jsx一项不变。
