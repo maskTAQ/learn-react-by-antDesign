@@ -1016,12 +1016,12 @@ body .markdown-body
 }
 </style><title>readme</title></head><body><article class="markdown-body"><h1 id="ant-designreact"><a name="user-content-ant-designreact" href="#ant-designreact" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>抄一遍ant-design源码学习react</h1>
 <ol>
-<li>源码中遇到了typescript和less,于是先看了一边API。</li>
-<li>在配置tsconfig遇到了一些问题 import 总是咬install @type/moduleName 改为ant-design一样的配置就行了 jsx一项不变。</li>
+<li>源码中遇到了typescript和less,于是先看了一遍教程。</li>
+<li>在配置tsconfig遇到了一些问题 import 总是需要install @type/moduleName 改为ant-design一样的配置就行了 jsx一项不变。</li>
 </ol>
 <h2 id="button"><a name="user-content-button" href="#button" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>button 组件</h2>
 <p>组件引入了omit.js看了一下源码就是删除对象的指定键。</p>
-<p><pre><code class="javascript">let omit(obj, fields) {
+<p><pre><code class="javascript">let omit=(obj, fields)=&gt;{
   var copy = assign({}, obj);
   for (var i = 0; i &lt; fields.length; i++) {
     var key = fields[i];
@@ -1035,5 +1035,7 @@ body .markdown-body
 3. 组件卸载时 清空俩个定时器 loading状态的 click的<br />
 4. 点击按钮的时候 延迟500ms 取消点击状态 <br />
 5. 把用户传递参数值(除了事件) 添加class前缀 添加到class里<br />
-6. 把其他没用到的属性 剔除loading clicked(利用omit.js) 缘分不动的传进原生button属性中<br />
-7. ant把子元素处理了一下 在字符串之前俩个空格(没明白是为什么)</p></article></body></html>
+6. 把其他没用到的属性 剔除loading clicked(利用omit.js) 原封不动的传进原生button属性中<br />
+7. ant把子元素处理了一下 在字符串之前俩个空格(没明白是为什么)</p>
+<pre><code>buttonGroup就是在button外面包裹了一层div。然后挂载在button类的静态属性下。
+</code></pre></article></body></html>

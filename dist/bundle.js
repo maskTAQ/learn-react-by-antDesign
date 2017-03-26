@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -80,138 +80,6 @@ module.exports = ReactDOM;
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_omit_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_omit_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_omit_js__);
-var __rest = this && this.__rest || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]];
-    return t;
-};
-
-
-
-
-class Button extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-    constructor(props) {
-        super(props);
-        //用箭头函数 是为了绑定this
-        this.handleClick = e => {
-            //添加点击效果
-            this.setState({ clicked: true });
-            clearTimeout(this.timeout);
-            this.timeout = setTimeout(() => this.setState({ clicked: false }), 500);
-            const onClick = this.props.onClick;
-            if (onClick) {
-                onClick(e);
-            }
-        };
-        //在谷歌下处理点击时自动获取焦点
-        this.handleMouseUp = e => {
-            //this 为 HTMLElement对象
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_dom__["findDOMNode"])(this).blur();
-            this.props.onMouseUp && this.props.onMouseUp(e);
-        };
-        this.state = {
-            loading: props.loading
-        };
-    }
-    componentWillReceiveProps(nextProps) {
-        const currentLoading = this.props.loading;
-        const loading = nextProps.loading;
-        if (currentLoading) {
-            clearTimeout(this.delayTimeout);
-        }
-        if (loading) {
-            this.delayTimeout = setTimeout(() => this.setState({ loading }), 200);
-        } else {
-            this.setState({ loading });
-        }
-    }
-    componentWillUnmount() {
-        if (this.timeout) {
-            clearTimeout(this.timeout);
-        }
-        if (this.delayTimeout) {
-            clearTimeout(this.delayTimeout);
-        }
-    }
-    render() {
-        const _a = this.props,
-              { type, shape, size = '', className, htmlType, children, icon, prefixCls, ghost } = _a,
-              others = __rest(_a, ["type", "shape", "size", "className", "htmlType", "children", "icon", "prefixCls", "ghost"]);
-        const { loading, clicked } = this.state;
-        //将传进来的 size属性 赋值给 sizeCls 并缩写
-        const sizeCls = {
-            large: 'lg',
-            small: 'sm'
-        }[size] || '';
-        const classes = __WEBPACK_IMPORTED_MODULE_1_classnames___default()(prefixCls, {
-            //将属性和属性前缀拼成class
-            [`${prefixCls}-${type}`]: type,
-            [`${prefixCls}-${shape}`]: shape,
-            [`${prefixCls}-${sizeCls}`]: sizeCls,
-            [`${prefixCls}-icon-only`]: !children && icon,
-            [`${prefixCls}-loading`]: loading,
-            [`${prefixCls}-clicked`]: clicked,
-            [`${prefixCls}-background-ghost`]: ghost
-        }, className);
-        const iconType = loading ? 'loading' : icon;
-        const iconNode = iconType ? '<Icon type={iconType} />' : null;
-        //const kids = React.Children.map(children, insertSpace);
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", Object.assign({}, __WEBPACK_IMPORTED_MODULE_3_omit_js___default()(others, ['loading', 'clicked']), { type: htmlType || 'button', className: classes, onMouseUp: this.handleMouseUp, onClick: this.handleClick }), iconNode, children);
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = Button;
-
-Button.__ANT_BUTTON = true;
-Button.defaultProps = {
-    prefixCls: 'ant-btn',
-    loading: false,
-    clicked: false,
-    ghost: false
-};
-Button.propTypes = {
-    type: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
-    shape: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.oneOf(['cirlce', 'circle-outline']),
-    size: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.oneOf(['large', 'default', 'small']),
-    htmlType: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.oneOf(['submit', 'button', 'reset']),
-    onClick: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.func,
-    loading: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.bool,
-    className: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
-    icon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string
-};
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var assign = __webpack_require__(5);
-
-module.exports = function omit(obj, fields) {
-  var copy = assign({}, obj);
-  for (var i = 0; i < fields.length; i++) {
-    var key = fields[i];
-    delete copy[key];
-  }
-  return copy;
-};
-
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -263,6 +131,37 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		window.classNames = classNames;
 	}
 }());
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__button_group__ = __webpack_require__(6);
+
+
+__WEBPACK_IMPORTED_MODULE_0__button__["a" /* default */].Group = __WEBPACK_IMPORTED_MODULE_1__button_group__["a" /* default */];
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__button__["a" /* default */]);
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var assign = __webpack_require__(5);
+
+module.exports = function omit(obj, fields) {
+  var copy = assign({}, obj);
+  for (var i = 0; i < fields.length; i++) {
+    var key = fields[i];
+    delete copy[key];
+  }
+  return copy;
+};
 
 
 /***/ }),
@@ -367,16 +266,162 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_classnames__);
+/* harmony export (immutable) */ __webpack_exports__["a"] = ButtonGroup;
+var __rest = this && this.__rest || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]];
+    return t;
+};
+
+
+function ButtonGroup(props) {
+    const { prefixCls = 'ant-btn-group', size = '', className } = props,
+          others = __rest(props, ["prefixCls", "size", "className"]);
+    // large => lg
+    // small => sm
+    const sizeCls = {
+        large: 'lg',
+        small: 'sm'
+    }[size] || '';
+    const classes = __WEBPACK_IMPORTED_MODULE_1_classnames___default()(prefixCls, {
+        [`${prefixCls}-${sizeCls}`]: sizeCls
+    }, className);
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", Object.assign({}, others, { className: classes }));
+}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_omit_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_omit_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_omit_js__);
+var __rest = this && this.__rest || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]];
+    return t;
+};
+
+
+
+
+class Button extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+    constructor(props) {
+        super(props);
+        //用箭头函数 是为了绑定this
+        this.handleClick = e => {
+            //添加点击效果
+            this.setState({ clicked: true });
+            clearTimeout(this.timeout);
+            this.timeout = setTimeout(() => this.setState({ clicked: false }), 500);
+            const onClick = this.props.onClick;
+            if (onClick) {
+                onClick(e);
+            }
+        };
+        //在谷歌下处理点击时自动获取焦点
+        this.handleMouseUp = e => {
+            //this 为 HTMLElement对象
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_dom__["findDOMNode"])(this).blur();
+            this.props.onMouseUp && this.props.onMouseUp(e);
+        };
+        this.state = {
+            loading: props.loading
+        };
+    }
+    componentWillReceiveProps(nextProps) {
+        const currentLoading = this.props.loading;
+        const loading = nextProps.loading;
+        if (currentLoading) {
+            clearTimeout(this.delayTimeout);
+        }
+        if (loading) {
+            this.delayTimeout = setTimeout(() => this.setState({ loading }), 200);
+        } else {
+            this.setState({ loading });
+        }
+    }
+    componentWillUnmount() {
+        if (this.timeout) {
+            clearTimeout(this.timeout);
+        }
+        if (this.delayTimeout) {
+            clearTimeout(this.delayTimeout);
+        }
+    }
+    render() {
+        const _a = this.props,
+              { type, shape, size = '', className, htmlType, children, icon, prefixCls, ghost } = _a,
+              others = __rest(_a, ["type", "shape", "size", "className", "htmlType", "children", "icon", "prefixCls", "ghost"]);
+        const { loading, clicked } = this.state;
+        //将传进来的 size属性 赋值给 sizeCls 并缩写
+        const sizeCls = {
+            large: 'lg',
+            small: 'sm'
+        }[size] || '';
+        const classes = __WEBPACK_IMPORTED_MODULE_1_classnames___default()(prefixCls, {
+            //将属性和属性前缀拼成class
+            [`${prefixCls}-${type}`]: type,
+            [`${prefixCls}-${shape}`]: shape,
+            [`${prefixCls}-${sizeCls}`]: sizeCls,
+            [`${prefixCls}-icon-only`]: !children && icon,
+            [`${prefixCls}-loading`]: loading,
+            [`${prefixCls}-clicked`]: clicked,
+            [`${prefixCls}-background-ghost`]: ghost
+        }, className);
+        const iconType = loading ? 'loading' : icon;
+        const iconNode = iconType ? '<Icon type={iconType} />' : null;
+        //const kids = React.Children.map(children, insertSpace);
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", Object.assign({}, __WEBPACK_IMPORTED_MODULE_3_omit_js___default()(others, ['loading', 'clicked']), { type: htmlType || 'button', className: classes, onMouseUp: this.handleMouseUp, onClick: this.handleClick }), iconNode, children);
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Button;
+
+Button.__ANT_BUTTON = true;
+Button.defaultProps = {
+    prefixCls: 'ant-btn',
+    loading: false,
+    clicked: false,
+    ghost: false
+};
+Button.propTypes = {
+    type: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
+    shape: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.oneOf(['cirlce', 'circle-outline']),
+    size: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.oneOf(['large', 'default', 'small']),
+    htmlType: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.oneOf(['submit', 'button', 'reset']),
+    onClick: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.func,
+    loading: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.bool,
+    className: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
+    icon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_button_Button__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_button__ = __webpack_require__(3);
 
 
 
-__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_button_Button__["a" /* default */], { onClick: () => alert(1), onMouseUp: () => alert(2), type: "danger", "data-ss": "ss" }, "ss"), document.getElementById("example"));
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_button__["a" /* default */], { onClick: () => alert(1), onMouseUp: () => alert(2), type: "danger", "data-ss": "ss" }, "ss"), document.getElementById("example"));
 
 /***/ })
 /******/ ]);
