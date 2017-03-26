@@ -5,6 +5,7 @@
 1. 源码中遇到了typescript和less,于是先看了一遍教程。
 2. 在配置tsconfig遇到了一些问题 import 总是需要install @type/moduleName 改为ant-design一样的配置就行了 jsx一项不变。
 3. 配置loader时不支持缩写了!!!
+4. ?组件再传参的时候利用typescrip声明了类型，在组件内部也用 propTypes重复声明了类型，感觉是不是有点多余。
 
 ## button 组件
 组件引入了omit.js看了一下源码就是删除对象的指定键。
@@ -31,3 +32,7 @@ let omit=(obj, fields)=>{
 
 ## icon组件
 	定义了返回标签的方法
+
+## grid组件
+	row组件只允许子级是元素。rol组件中将PropTypes赋予其他指针，少写了很多代码。
+	也没有用其他组件的omit而是通过遍历大小属性值时就删除了[我给他改成omit删除了感觉思路更清晰]。
