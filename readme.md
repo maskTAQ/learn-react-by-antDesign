@@ -7,7 +7,11 @@
 3. 配置loader时不支持缩写了!!!
 4. ?组件再传参的时候利用typescrip声明了类型，在组件内部也用 propTypes重复声明了类型，感觉是不是有点多余。
 
-component/style中定义了样式的基类包括色调和生成色调的算法(具体实现看不懂)。
+
+		component/style中定义了样式的基类包括色调和生成色调的算法(具体实现看不懂)。
+# typescript总结
+	1. 所有props都必须要在interface中定义[不是必须的参数使用?标识]。
+
 ## button 组件
 组件引入了omit.js看了一下源码就是删除对象的指定键。
 
