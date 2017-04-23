@@ -1,5 +1,5 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var webpack= require("webpack");
+var webpack = require("webpack");
 module.exports = {
     entry: "./src/index.tsx",
     output: {
@@ -13,31 +13,33 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [ ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
 
     module: {
-        loaders: [
-        {
-            test: /\.tsx?$/,
-            loader: ['babel-loader','awesome-typescript-loader']
-        },
-       {
-    test: /\.css/,
-    loader: ExtractTextPlugin.extract('css-loader')
-},
-        {test: /\.less$/, loader: ExtractTextPlugin.extract('css-loader!less-loader')}
+        loaders: [{
+                test: /\.tsx?$/,
+                loader: ['babel-loader', 'awesome-typescript-loader']
+            },
+            {
+                test: /\.css/,
+                loader: ExtractTextPlugin.extract('css-loader')
+            },
+            {
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract('css-loader!less-loader')
+            }
         ]
 
 
     },
     devServer: {
-        inline: true,//实时刷新
-        port:8080
+        inline: true, //实时刷新
+        port: 8080
     },
-    plugins:  [
-     new ExtractTextPlugin("[name].css"),  
-],
+    plugins: [
+        new ExtractTextPlugin("[name].css"),
+    ],
     // When importing a module whose path matches one of the following, just
     // assume a corresponding global variable exists and use that instead.
     // This is important because it allows us to avoid bundling all of our
