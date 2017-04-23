@@ -456,7 +456,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_button__["a" /* default */], { loading: true, type: "danger", "data-ss": "ss" }, "ss"), document.getElementById("example"));
+const createButton = () => {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_button__["a" /* default */], { type: "danger", "data-text": "自定义属性" }, "button");
+};
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(createButton(), document.getElementById("example"));
 
 /***/ })
 /******/ ]);
